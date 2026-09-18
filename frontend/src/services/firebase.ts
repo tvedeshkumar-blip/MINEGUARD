@@ -19,7 +19,7 @@ export interface FirebaseConfig {
 export function getFirebaseConfig(): FirebaseConfig {
   const databaseURL = import.meta.env.VITE_FIREBASE_DATABASE_URL || 'https://mine-safety-rover-default-rtdb.firebaseio.com';
   const projectId = import.meta.env.VITE_FIREBASE_PROJECT_ID || 'mine-safety-rover';
-  const apiKey = import.meta.env.VITE_FIREBASE_API_KEY || 'AIzaSyDBapoJoP0inktn-LlNuURGg6y5aKSk3zY';
+  const apiKey = import.meta.env.VITE_FIREBASE_API_KEY || 'YOUR_FIREBASE_API_KEY';
 
   if (!databaseURL) {
     console.error('[MINEGUARD Firebase Error] Missing required environment variable: VITE_FIREBASE_DATABASE_URL');
