@@ -1,0 +1,286 @@
+/* ====================================================
+   MINEGUARD – Global Design System
+   ==================================================== */
+
+/* Google Fonts are loaded via index.html */
+
+:root {
+  /* Brand Colors */
+  --primary:        #f97316;   /* Safety Orange */
+  --primary-dark:   #ea580c;
+  --primary-light:  #fed7aa;
+  --accent:         #fbbf24;   /* Warning Amber */
+  --danger:         #ef4444;   /* Alert Red */
+  --success:        #22c55e;   /* Safe Green */
+  --info:           #3b82f6;   /* Info Blue */
+
+  /* Dark Theme Base */
+  --bg-deep:        #070b12;
+  --bg-surface:     #0d1520;
+  --bg-card:        #111d2e;
+  --bg-card-hover:  #162233;
+  --bg-glass:       rgba(13, 21, 32, 0.7);
+
+  /* Borders */
+  --border:         rgba(249, 115, 22, 0.12);
+  --border-bright:  rgba(249, 115, 22, 0.35);
+  --border-subtle:  rgba(255, 255, 255, 0.06);
+
+  /* Text */
+  --text-primary:   #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted:     #64748b;
+  --text-inverse:   #070b12;
+
+  /* Gradients */
+  --grad-primary:   linear-gradient(135deg, #f97316 0%, #fbbf24 100%);
+  --grad-danger:    linear-gradient(135deg, #ef4444 0%, #f97316 100%);
+  --grad-bg:        linear-gradient(180deg, #070b12 0%, #0d1520 50%, #070b12 100%);
+  --grad-hero:      linear-gradient(135deg, #0d1520 0%, #111d2e 50%, #0d1520 100%);
+
+  /* Shadows */
+  --shadow-sm:      0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md:      0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-lg:      0 20px 60px rgba(0, 0, 0, 0.6);
+  --shadow-glow:    0 0 40px rgba(249, 115, 22, 0.2);
+  --shadow-danger:  0 0 40px rgba(239, 68, 68, 0.25);
+
+  /* Typography */
+  --font-body:    'Inter', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+
+  /* Spacing & Layout */
+  --max-width:    1200px;
+  --section-py:   96px;
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    20px;
+  --radius-xl:    32px;
+
+  /* Transitions */
+  --transition:   all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background: var(--bg-deep);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100svh;
+}
+
+/* ---- Typography ---- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---- Utility Classes ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: var(--section-py) 0;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.badge--primary {
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  color: var(--primary);
+}
+
+.badge--danger {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: var(--danger);
+}
+
+.badge--success {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  color: var(--success);
+}
+
+.badge--info {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: var(--info);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-md);
+  font-size: 15px;
+  font-weight: 600;
+  transition: var(--transition);
+  white-space: nowrap;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.btn--primary {
+  background: var(--grad-primary);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.4);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(249, 115, 22, 0.55);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-bright);
+}
+
+.btn--secondary:hover {
+  background: rgba(249, 115, 22, 0.08);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.btn--danger {
+  background: var(--grad-danger);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+}
+
+.btn--danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.55);
+}
+
+.btn--lg {
+  padding: 18px 36px;
+  font-size: 16px;
+  border-radius: var(--radius-lg);
+}
+
+/* ---- Pulse animation ---- */
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ---- Selection ---- */
+::selection {
+  background: rgba(249, 115, 22, 0.3);
+  color: var(--text-primary);
+}
+
+/* ---- Focus ---- */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* ---- Responsive helpers ---- */
+@media (max-width: 768px) {
+  :root {
+    --section-py: 64px;
+  }
+  .container {
+    padding: 0 16px;
+  }
+}

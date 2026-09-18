@@ -1,0 +1,638 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner {
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px dashed rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--primary);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+}
+
+.videoSection {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.videoHeader {
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.videoTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.livePill {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(34, 197, 94, 0.18);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.liveDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+/* Large Simulated HUD Viewport */
+.videoViewport {
+  position: relative;
+  min-height: 480px;
+  background: #070a10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nightVisionBg {
+  background: radial-gradient(ellipse at center, rgba(34, 197, 94, 0.12) 0%, #030a05 85%);
+  filter: contrast(1.2) brightness(1.1);
+}
+
+.thermalBg {
+  background: radial-gradient(ellipse at center, rgba(239, 68, 68, 0.25) 0%, rgba(59, 130, 246, 0.25) 50%, #050518 90%);
+}
+
+.standardBg {
+  background: radial-gradient(ellipse at 50% 60%, rgba(249, 115, 22, 0.1) 0%, #090c14 75%);
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Simulated AI Bounding Boxes */
+.aiBoundingBox {
+  position: absolute;
+  border: 1.5px solid #f97316;
+  background: rgba(249, 115, 22, 0.1);
+  padding: 4px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.aiBoxLabel {
+  position: absolute;
+  top: -18px;
+  left: -1px;
+  background: #f97316;
+  color: #000;
+  font-size: 9.5px;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 2px 2px 0 0;
+  white-space: nowrap;
+}
+
+.hudOverlay {
+  position: absolute;
+  inset: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.hudTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #22c55e;
+  font-family: monospace;
+}
+
+.hudBadge {
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3px 8px;
+  border-radius: 3px;
+}
+
+.hudCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: rgba(34, 197, 94, 0.7);
+}
+
+.crosshairSvg {
+  width: 70px;
+  height: 70px;
+}
+
+.hudBottom {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #22c55e;
+  font-family: monospace;
+}
+
+/* Right Control Panel for Camera */
+.controlCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.controlSection {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sectionTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 4px;
+}
+
+.toggleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.toggleBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 9px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.toggleBtn.activeToggle {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  font-weight: 700;
+}
+
+.ptzGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.ptzBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ptzBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary);
+}
+
+.snapshotBtn {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.snapshotBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--primary);
+}
+
+@media (max-width: 992px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Live Stream Video Image & Fallback ── */
+.streamImage {
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.offlineOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: rgba(7, 10, 16, 0.92);
+  z-index: 8;
+  color: #ef4444;
+  text-align: center;
+  padding: 20px;
+}
+
+.offlineIcon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.8;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+/* ── Camera Telemetry Status Bar ── */
+.cameraStatusBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(13, 17, 23, 0.9);
+  border-top: 1px solid var(--border-subtle);
+  font-size: 11px;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.statusGroup {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.statusItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusItem strong {
+  color: var(--text-primary);
+}
+
+.badgeEstimated {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(239, 68, 68, 0.16);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ── Scientific Pseudo-Thermal Colormap Legend ── */
+.thermalLegendContainer {
+  position: absolute;
+  bottom: 40px;
+  left: 16px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: auto;
+  max-width: 280px;
+}
+
+.thermalLegendHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #f97316;
+}
+
+.thermalGradientBar {
+  height: 8px;
+  width: 100%;
+  border-radius: 3px;
+  background: linear-gradient(to right, #000004, #3b0f70, #8c2981, #de4968, #fe9f6d, #fcfdbf);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.thermalLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.thermalDisclaimer {
+  font-size: 8.5px;
+  color: #94a3b8;
+  line-height: 1.3;
+  margin-top: 2px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 3px;
+}
+
+/* ── Live Hotspot Callout Box ── */
+.hotspotBox {
+  position: absolute;
+  border: 2px dashed #ef4444;
+  background: rgba(239, 68, 68, 0.18);
+  pointer-events: none;
+  z-index: 7;
+  animation: hotspotGlow 1.5s infinite alternate;
+}
+
+@keyframes hotspotGlow {
+  0% { box-shadow: 0 0 4px rgba(239, 68, 68, 0.4); }
+  100% { box-shadow: 0 0 12px rgba(239, 68, 68, 0.9); }
+}
+
+.hotspotBadge {
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  background: #ef4444;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 1px 5px;
+  border-radius: 0 0 3px 3px;
+  white-space: nowrap;
+}
+
+/* ── Configuration Button & Modal ── */
+.configToggleBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+}
+
+.configToggleBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--primary);
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.configModal {
+  background: #0d121d;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modalHeader {
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modalTitle {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.closeBtn:hover {
+  color: #fff;
+}
+
+.modalBody {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formLabel {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+
+.formInput, .formSelect {
+  background: #070a10;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  padding: 9px 12px;
+  font-size: 12px;
+  outline: none;
+}
+
+.formInput:focus, .formSelect:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(249, 115, 22, 0.2);
+}
+
+.testRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.testBtn {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+  padding: 9px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.testBtn:hover:not(:disabled) {
+  background: rgba(59, 130, 246, 0.25);
+}
+
+.testBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.testResultSuccess {
+  font-size: 11px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.testResultError {
+  font-size: 11px;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.modalFooter {
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btnCancel {
+  background: transparent;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btnSave {
+  background: var(--primary);
+  border: none;
+  color: #000;
+  padding: 8px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}

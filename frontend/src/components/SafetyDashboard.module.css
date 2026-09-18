@@ -1,0 +1,345 @@
+/* SafetyDashboard.module.css */
+
+.section {
+  background: var(--bg-deep);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Dashboard layout */
+.dashboard {
+  display: grid;
+  grid-template-columns: 180px 1fr 240px;
+  gap: 16px;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.statCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  transition: var(--transition);
+}
+
+.statCard:hover {
+  border-color: var(--border-bright);
+}
+
+.statCardAlert {
+  border-color: rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.statLabel {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.statValue {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.statSub {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.textGreen { color: var(--success); }
+.textRed   { color: var(--danger); }
+
+/* Map area */
+.mapArea {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.mapHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mapTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.mapLegend {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Map */
+.map {
+  position: relative;
+  height: 340px;
+  background:
+    radial-gradient(ellipse at center, rgba(249, 115, 22, 0.04) 0%, transparent 70%),
+    var(--bg-surface);
+  overflow: hidden;
+}
+
+.tunnels {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Zone node */
+.zoneNode {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+}
+
+.zoneRing {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--zone-color, #22c55e);
+  opacity: 0.15;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+}
+
+.zoneNode:hover .zoneRing {
+  opacity: 0.3;
+}
+
+.zoneRingPulse {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.zoneId {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bg-card);
+  border: 2px solid var(--zone-color, #22c55e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--zone-color, #22c55e);
+  position: relative;
+  z-index: 1;
+  transition: var(--transition);
+  box-shadow: 0 0 12px -2px var(--zone-color);
+}
+
+.zoneNode:hover .zoneId {
+  transform: scale(1.15);
+}
+
+.zoneWorkers {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+/* Event log */
+.eventLog {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.eventLogTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.eventList {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.eventItem {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: var(--transition);
+  align-items: flex-start;
+}
+
+.eventItem:last-child {
+  border-bottom: none;
+}
+
+.eventItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Event type colors */
+.eventIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.event--danger .eventIcon  { background: rgba(239,68,68,0.15);  color: var(--danger);  }
+.event--warning .eventIcon { background: rgba(251,191,36,0.15); color: var(--accent);  }
+.event--info .eventIcon    { background: rgba(59,130,246,0.15); color: var(--info);    }
+.event--success .eventIcon { background: rgba(34,197,94,0.15);  color: var(--success); }
+
+.event--danger  { border-left: 2px solid var(--danger);  }
+.event--warning { border-left: 2px solid var(--accent);  }
+.event--info    { border-left: 2px solid var(--info);    }
+.event--success { border-left: 2px solid var(--success); }
+
+.eventContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.eventMsg {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.eventTime {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .dashboard {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+  }
+  .sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .mapArea {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+  .eventLog {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+  .sidebar {
+    grid-column: 1;
+    grid-row: 1;
+    grid-template-columns: 1fr 1fr;
+  }
+  .mapArea {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .eventLog {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .map {
+    height: 260px;
+  }
+}
+
+@media (max-width: 400px) {
+  .sidebar {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,19 @@
+# Node.js dependencies & build output
+node_modules
+dist
+*.log
+
+# Environment Files
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# SQLite Database local files
+data/*.db
+data/*.sqlite
+
+# Editor files
+.vscode
+.idea
+.DS_Store

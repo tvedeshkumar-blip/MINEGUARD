@@ -1,0 +1,106 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to check if request is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function to check if user owns document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+    
+    // Helper function to check if user has a specific role in token or user doc
+    function hasRole(role) {
+      return isAuthenticated() && 
+        (request.auth.token.role == role || 
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role);
+    }
+    
+    // 1. Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId) || hasRole('ADMIN');
+    }
+    
+    // 2. Zones collection
+    match /zones/{zoneId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('SAFETY_OFFICER');
+    }
+    
+    // 3. Workers collection
+    match /workers/{workerId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('SAFETY_OFFICER');
+    }
+    
+    // 4. Sensors & Sensor Readings collections
+    match /sensors/{sensorId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN');
+    }
+    
+    match /sensorReadings/{readingId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN');
+    }
+    
+    // 5. Alerts collection
+    match /alerts/{alertId} {
+      allow read: if isAuthenticated();
+      allow update: if isAuthenticated() && (
+        request.resource.data.diff(resource.data).affectedKeys().hasOnly(['resolved', 'resolvedAt', 'updatedAt'])
+      );
+      allow create, delete: if hasRole('ADMIN') || hasRole('SAFETY_OFFICER');
+    }
+    
+    // 6. Emergency Incidents & Timeline
+    match /emergencyIncidents/{incidentId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('SAFETY_OFFICER') || hasRole('RESCUE_TEAM') || hasRole('CONTROL_OPERATOR');
+    }
+    
+    match /emergencyTimeline/{eventId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('SAFETY_OFFICER') || hasRole('CONTROL_OPERATOR');
+    }
+    
+    // 7. Rovers & Rover Telemetry
+    match /rovers/{roverId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('CONTROL_OPERATOR');
+    }
+    
+    match /roverTelemetry/{telemetryId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('CONTROL_OPERATOR');
+    }
+    
+    match /roverCommands/{commandId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated() && (hasRole('ADMIN') || hasRole('CONTROL_OPERATOR') || hasRole('SAFETY_OFFICER'));
+      allow update, delete: if false; // Command history is immutable
+    }
+    
+    // 8. Vision Events
+    match /visionEvents/{eventId} {
+      allow read: if isAuthenticated();
+      allow write: if hasRole('ADMIN') || hasRole('CONTROL_OPERATOR');
+    }
+    
+    // 9. Audit Logs
+    match /auditLogs/{logId} {
+      allow read: if isAuthenticated();
+      allow create: if isAuthenticated();
+      allow update, delete: if false; // Immutable audit log
+    }
+
+    // Default DENY rule for unhandled paths
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

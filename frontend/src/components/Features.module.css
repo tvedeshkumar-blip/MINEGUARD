@@ -1,0 +1,168 @@
+/* Features.module.css */
+
+.features {
+  background: var(--bg-surface);
+  position: relative;
+}
+
+.features::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+}
+
+.features::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.title {
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+/* Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Card */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(249, 115, 22, 0.05), transparent 60%);
+  opacity: 0;
+  transition: var(--transition);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.card:hover {
+  border-color: var(--border-bright);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* Icon */
+.cardIconWrap {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: rgba(249, 115, 22, 0.1);
+  border: 1px solid rgba(249, 115, 22, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  transition: var(--transition);
+}
+
+.card:hover .cardIconWrap {
+  background: rgba(249, 115, 22, 0.2);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.2);
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardBadge {
+  align-self: flex-start;
+  font-size: 10px;
+}
+
+.cardTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.cardDesc {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  flex: 1;
+}
+
+/* Highlights */
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.highlightItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    margin-bottom: 40px;
+  }
+}

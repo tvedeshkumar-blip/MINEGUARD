@@ -1,0 +1,12 @@
+/* App.css – Layout wrapper */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  background: var(--bg-deep);
+}
+
+main {
+  flex: 1;
+}

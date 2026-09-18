@@ -1,0 +1,315 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.banner {
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px dashed rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: var(--primary);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mainGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.liveDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+/* Rover Virtual D-Pad / Controls */
+.controlArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 16px 0;
+}
+
+.dPadRow {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.dPadBtn {
+  width: 72px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: var(--transition);
+  user-select: none;
+}
+
+.dPadBtn:hover:not(:disabled) {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
+}
+
+.dPadBtn:active:not(:disabled) {
+  transform: translateY(1px);
+  background: rgba(249, 115, 22, 0.3);
+}
+
+.dPadBtn.activeDirection {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.5);
+}
+
+.stopBtn {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
+  font-weight: 800;
+}
+
+.stopBtn:hover:not(:disabled) {
+  background: #ef4444;
+  color: #fff;
+}
+
+/* Throttle Slider */
+.sliderBox {
+  background: var(--bg-surface);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sliderHeader {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.rangeInput {
+  width: 100%;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+/* Compact Front Scoop Section */
+.scoopBox {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scoopHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoopTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scoopBadge {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(249, 115, 22, 0.15);
+  color: var(--primary);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+}
+
+.scoopButtons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.scoopBtn {
+  padding: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.scoopBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.scoopBtn.activeScoop {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+}
+
+/* Quick Actions: E-Stop and Crawler Mode */
+.emergencyStopBtn {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);
+  transition: var(--transition);
+}
+
+.emergencyStopBtn:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* Telemetry Column */
+.telemetryGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.telCard {
+  background: var(--bg-surface);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.telLabel {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.telValue {
+  font-size: 18px;
+  font-weight: 800;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+}
+
+.telSub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* 4WD Wheel Motor Current Bars */
+.motorGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.motorRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.motorLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--text-secondary);
+}
+
+.motorBarBg {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.motorBarFill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+}
+
+@media (max-width: 992px) {
+  .mainGrid {
+    grid-template-columns: 1fr;
+  }
+}

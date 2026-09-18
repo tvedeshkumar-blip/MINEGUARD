@@ -1,0 +1,263 @@
+/* LoginPage.module.css */
+
+.container {
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-deep);
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.bgGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.backLink {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  z-index: 10;
+}
+
+.backBtn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.backBtn:hover {
+  color: var(--primary);
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 440px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  position: relative;
+  z-index: 1;
+}
+
+.loginCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--grad-primary);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 16px rgba(249, 115, 22, 0.4));
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.errorBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: var(--radius-sm);
+  color: var(--danger);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+}
+
+.passwordWrapper .input {
+  padding-right: 48px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.togglePassword:hover {
+  color: var(--text-primary);
+}
+
+.submitBtn {
+  margin-top: 8px;
+  width: 100%;
+}
+
+.demoSection {
+  margin-top: 32px;
+}
+
+.demoHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.demoLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.demoTitle {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.demoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.demoAccountBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  transition: var(--transition);
+}
+
+.demoAccountBtn:hover {
+  border-color: var(--primary);
+  background: rgba(249, 115, 22, 0.05);
+}
+
+.demoRole {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.demoEmail {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: var(--mono);
+}
+
+.demoHint {
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.demoHint strong {
+  color: var(--text-primary);
+}
+
+@media (max-width: 600px) {
+  .loginCard {
+    padding: 32px 24px;
+  }
+  .backLink {
+    top: 24px;
+    left: 24px;
+  }
+}
