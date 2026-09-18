@@ -63,13 +63,13 @@ This guide documents the complete integration of **Firebase Authentication** and
 VITE_API_BASE_URL=http://localhost:5000/api
 VITE_WS_BASE_URL=ws://localhost:5000/ws
 
-VITE_FIREBASE_API_KEY=AIzaSyAMBlzOzr69krN_ojosZB-GwTlyWTTeTDo
-VITE_FIREBASE_AUTH_DOMAIN=mineguard-25e0b.firebaseapp.com
-VITE_FIREBASE_DATABASE_URL=https://mineguard-25e0b-default-rtdb.asia-southeast1.firebasedatabase.app
-VITE_FIREBASE_PROJECT_ID=mineguard-25e0b
-VITE_FIREBASE_STORAGE_BUCKET=mineguard-25e0b.firebasestorage.app
-VITE_FIREBASE_MESSAGING_SENDER_ID=967014153713
-VITE_FIREBASE_APP_ID=1:967014153713:web:3f69c5185359ab52da5850
+VITE_FIREBASE_API_KEY=YOUR_API_KEY_HERE
+VITE_FIREBASE_AUTH_DOMAIN=YOUR_PROJECT_ID.firebaseapp.com
+VITE_FIREBASE_DATABASE_URL=https://YOUR_PROJECT_ID-default-rtdb.REGION.firebasedatabase.app
+VITE_FIREBASE_PROJECT_ID=YOUR_PROJECT_ID
+VITE_FIREBASE_STORAGE_BUCKET=YOUR_PROJECT_ID.firebasestorage.app
+VITE_FIREBASE_MESSAGING_SENDER_ID=YOUR_SENDER_ID
+VITE_FIREBASE_APP_ID=YOUR_FIREBASE_APP_ID
 ```
 
 ### Backend (`backend/.env`)
